@@ -4,6 +4,8 @@ This is a **Python** solutions for the book [Cracking the Coding Interview, 6th 
 
 ## How to use?
 
+`Built for python 3.10+`
+
 ```python
 
 python ChapterX/<filename>.py
