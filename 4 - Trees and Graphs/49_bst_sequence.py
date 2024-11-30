@@ -5,7 +5,25 @@ Given a binary search tree with distinct elements, print all possible arrays tha
 '''
 # TODO
 
+import unittest
+
 from Tree import TreeNode
+
+'''
+    4
+2       5
+  3
+
+  
+[4]
+bst_sequence(2)
+    bst_sequence(3)
+bst_sequence(5)
+  
+
+  
+'''
+
 
 
 def bst_sequence(root:TreeNode | None) -> list[list[int]]:
@@ -36,6 +54,7 @@ def weave_list(left:list[list[int]], right:list[list[int]], output :list[list[in
         for seq in (left or right):
             res.append(seq)
         output.append(res)
+        return
     
     
     prefix.append(left.pop(0))
@@ -45,3 +64,19 @@ def weave_list(left:list[list[int]], right:list[list[int]], output :list[list[in
     prefix.append(right.pop(0))
     weave_list(left, right, output, prefix)
     right.insert(0, prefix.pop())
+
+class Test(unittest.TestCase):
+
+    test = (
+        ["a", "b", "c", "d", "e", "f"],
+        [("a", "d"), ("f", "b"), ("b", "d"), ("f", "a"), ("d", "c")],
+        ["e", "f", "b", "a", "d", "c"],
+    )
+
+    def test_bst_sequence(self):
+
+        self.assertEqual(bst_sequence(self.test[0], self.test[1]), self.test[2])
+
+
+if __name__ == "__main__":
+    unittest.main()
